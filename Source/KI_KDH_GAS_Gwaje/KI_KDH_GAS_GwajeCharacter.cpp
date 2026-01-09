@@ -13,6 +13,7 @@
 #include "Components/AbilitiesComponent.h"
 #include "Components/AttributeSetsComponent.h"
 #include "Components/GwajeAbilitySystemComponent.h"
+#include "AttributeSets/CommonAttributeSet.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -57,7 +58,8 @@ AKI_KDH_GAS_GwajeCharacter::AKI_KDH_GAS_GwajeCharacter()
 	if(AbilitySystemComponent)Internal_AbilitySystemComponent = Cast<UAbilitySystemComponent>(AbilitySystemComponent);
 
 	AbilitiesComponent = CreateDefaultSubobject<UAbilitiesComponent>(TEXT("AbilitiesComponent"));
-	AttributeSetsComponent = CreateDefaultSubobject<UAttributeSetsComponent>(TEXT("AttributeSetsComponent"));
+	PlayerAttributeSet = CreateDefaultSubobject<UCommonAttributeSet>(TEXT("PlayerAttributeSet"));
+	//AttributeSetsComponent = CreateDefaultSubobject<UAttributeSetsComponent>(TEXT("AttributeSetsComponent"));
 
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 

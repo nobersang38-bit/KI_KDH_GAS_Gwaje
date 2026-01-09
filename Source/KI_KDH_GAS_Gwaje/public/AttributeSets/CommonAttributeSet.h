@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "AttributeSet.h"
 #include "AbilitySystemComponent.h"
-#include "PlayerAttributeSet.generated.h"
+#include "CommonAttributeSet.generated.h"
 
 #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
 	GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
@@ -17,11 +17,11 @@
  * 
  */
 UCLASS()
-class KI_KDH_GAS_GWAJE_API UPlayerAttributeSet : public UAttributeSet
+class KI_KDH_GAS_GWAJE_API UCommonAttributeSet : public UAttributeSet
 {
 	GENERATED_BODY()
 public:
-	UPlayerAttributeSet();
+	UCommonAttributeSet();
 
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 	virtual void PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue) override;
@@ -32,17 +32,17 @@ public:
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Attribute")
 	FGameplayAttributeData MaxHealth;
-	ATTRIBUTE_ACCESSORS(UPlayerAttributeSet, MaxHealth);
+	ATTRIBUTE_ACCESSORS(UCommonAttributeSet, MaxHealth);
 
 	UPROPERTY(BlueprintReadOnly, Category = "Attribute")
 	FGameplayAttributeData Health;
-	ATTRIBUTE_ACCESSORS(UPlayerAttributeSet, Health);
+	ATTRIBUTE_ACCESSORS(UCommonAttributeSet, Health);
 
 	UPROPERTY(BlueprintReadOnly, Category = "Attribute")
 	FGameplayAttributeData MaxMana;
-	ATTRIBUTE_ACCESSORS(UPlayerAttributeSet, MaxMana);
+	ATTRIBUTE_ACCESSORS(UCommonAttributeSet, MaxMana);
 
 	UPROPERTY(BlueprintReadOnly, Category = "Attribute")
 	FGameplayAttributeData Mana;
-	ATTRIBUTE_ACCESSORS(UPlayerAttributeSet, Mana);
+	ATTRIBUTE_ACCESSORS(UCommonAttributeSet, Mana);
 };

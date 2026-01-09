@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "AttributeSets/PlayerAttributeSet.h"
+#include "AttributeSets/CommonAttributeSet.h"
 
-UPlayerAttributeSet::UPlayerAttributeSet()
+UCommonAttributeSet::UCommonAttributeSet()
 {
 	InitMaxHealth(100.0f);
 	InitHealth(GetMaxHealth());
@@ -12,7 +12,7 @@ UPlayerAttributeSet::UPlayerAttributeSet()
 	InitMana(GetMaxMana());
 }
 
-void UPlayerAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
+void UCommonAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
 {
 	Super::PreAttributeChange(Attribute, NewValue);
 
@@ -26,12 +26,12 @@ void UPlayerAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute
 	}
 }
 
-void UPlayerAttributeSet::PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue)
+void UCommonAttributeSet::PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue)
 {
 	Super::PostAttributeChange(Attribute, OldValue, NewValue);
 }
 
-void UPlayerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
+void UCommonAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
 	Super::PostGameplayEffectExecute(Data);
 }

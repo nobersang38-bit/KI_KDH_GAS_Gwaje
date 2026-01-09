@@ -57,8 +57,11 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS|Component")
 	TObjectPtr<class UAbilitiesComponent> AbilitiesComponent = nullptr;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS|Component")
-	TObjectPtr<class UAttributeSetsComponent> AttributeSetsComponent = nullptr;
+	UPROPERTY()
+	TObjectPtr<class UCommonAttributeSet> PlayerAttributeSet = nullptr;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS|Component")
+	//TObjectPtr<class UAttributeSetsComponent> AttributeSetsComponent = nullptr;
 
 private:
 	/** Camera boom positioning the camera behind the character */
