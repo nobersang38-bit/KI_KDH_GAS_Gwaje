@@ -10,6 +10,9 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Components/AbilitiesComponent.h"
+#include "Components/AttributeSetsComponent.h"
+#include "Components/GwajeAbilitySystemComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -50,12 +53,31 @@ AKI_KDH_GAS_GwajeCharacter::AKI_KDH_GAS_GwajeCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
+	AbilitySystemComponent = CreateDefaultSubobject<UGwajeAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
+	if(AbilitySystemComponent)Internal_AbilitySystemComponent = Cast<UAbilitySystemComponent>(AbilitySystemComponent);
+
+	AbilitiesComponent = CreateDefaultSubobject<UAbilitiesComponent>(TEXT("AbilitiesComponent"));
+	AttributeSetsComponent = CreateDefaultSubobject<UAttributeSetsComponent>(TEXT("AttributeSetsComponent"));
+
+
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
-//////////////////////////////////////////////////////////////////////////
-// Input
+UAbilitySystemComponent* AKI_KDH_GAS_GwajeCharacter::GetAbilitySystemComponent() const
+{
+	if (Internal_AbilitySystemComponent)
+	{
+		return Internal_AbilitySystemComponent;
+	}
+	return Cast<UAbilitySystemComponent>(AbilitySystemComponent);
+}
+
+void AKI_KDH_GAS_GwajeCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	GASInitialize();
+}
 
 void AKI_KDH_GAS_GwajeCharacter::NotifyControllerChanged()
 {
@@ -85,6 +107,9 @@ void AKI_KDH_GAS_GwajeCharacter::SetupPlayerInputComponent(UInputComponent* Play
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AKI_KDH_GAS_GwajeCharacter::Look);
+
+		//FireBall
+		EnhancedInputComponent->BindAction(FireBallAction, ETriggerEvent::Started, this, &AKI_KDH_GAS_GwajeCharacter::FireBall);
 	}
 	else
 	{
@@ -125,5 +150,22 @@ void AKI_KDH_GAS_GwajeCharacter::Look(const FInputActionValue& Value)
 		// add yaw and pitch input to controller
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
+	}
+}
+
+void AKI_KDH_GAS_GwajeCharacter::FireBall()
+{
+	UE_LOG(LogTemp, Log, TEXT("AKI_KDH_GAS_GwajeCharacter::FireBall"));
+	if (AbilitiesComponent)
+	{
+		AbilitiesComponent->ActivateAbilityByTag(Tag_FireBall);
+	}
+}
+
+void AKI_KDH_GAS_GwajeCharacter::GASInitialize()
+{
+	if (AbilitySystemComponent)
+	{
+		AbilitySystemComponent->InitAbilityActorInfo(this, this);
 	}
 }
