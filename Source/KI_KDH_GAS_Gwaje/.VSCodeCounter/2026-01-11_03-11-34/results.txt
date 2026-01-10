@@ -1,0 +1,47 @@
+Date : 2026-01-11 03:11:34
+Directory : h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private
+Total : 14 files,  522 codes, 43 comments, 167 blanks, all 732 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C++      |         14 |        522 |         43 |        167 |        732 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                 | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                    |         14 |        522 |         43 |        167 |        732 |
+| Actors                                                                                                               |          1 |         53 |          5 |         16 |         74 |
+| AttributeSets                                                                                                        |          1 |         28 |          1 |          9 |         38 |
+| Characters                                                                                                           |          1 |         49 |          5 |         16 |         70 |
+| Components                                                                                                           |          5 |        228 |         26 |         68 |        322 |
+| Controllers                                                                                                          |          1 |         10 |          1 |          5 |         16 |
+| GameplayAbilities                                                                                                    |          2 |         76 |          2 |         27 |        105 |
+| GameplayAbilities (Files)                                                                                            |          1 |         46 |          1 |         15 |         62 |
+| GameplayAbilities\GEEC                                                                                               |          1 |         30 |          1 |         12 |         43 |
+| Widgets                                                                                                              |          3 |         78 |          3 |         26 |        107 |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                             | language | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\Actors\GASEffectActor.cpp                  | C++      |         53 |          5 |         16 |         74 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\AttributeSets\CommonAttributeSet.cpp       | C++      |         28 |          1 |          9 |         38 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\Characters\GAS_Enemy.cpp                   | C++      |         49 |          5 |         16 |         70 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\Components\AbilitiesComponent.cpp          | C++      |        115 |         10 |         32 |        157 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\Components\AttributeSetComponent.cpp       | C++      |         17 |          7 |          7 |         31 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\Components\EnemyAttributeSetComponent.cpp  | C++      |         36 |          3 |         10 |         49 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\Components\GwajeAbilitySystemComponent.cpp | C++      |          1 |          1 |          3 |          5 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\Components\PlayerAttributeSetComponent.cpp | C++      |         59 |          5 |         16 |         80 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\Controllers\MainPlayerContoller.cpp        | C++      |         10 |          1 |          5 |         16 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\GameplayAbilities\GA_ActorSpawn.cpp        | C++      |         46 |          1 |         15 |         62 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\GameplayAbilities\GEEC\GEEC_Burn.cpp       | C++      |         30 |          1 |         12 |         43 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\Widgets\Widget_MainWidget.cpp              | C++      |         22 |          1 |          7 |         30 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\Widgets\Widget_PlayerProgressGroup.cpp     | C++      |          1 |          1 |          4 |          6 |
+| h:\Unreal\UnrealProjects\KI_KDH_GAS_Gwaje\Source\KI_KDH_GAS_Gwaje\Private\Widgets\Widget_Progress.cpp                | C++      |         55 |          1 |         15 |         71 |
+| Total                                                                                                                |          |        522 |         43 |        167 |        732 |
++----------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

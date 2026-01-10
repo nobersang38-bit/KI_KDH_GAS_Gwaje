@@ -31,6 +31,7 @@ public:
 	
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	
+	inline class UCommonAttributeSet* GetPlayerAttributeSet() const { return PlayerAttributeSet; }
 
 protected:
 	virtual void BeginPlay() override;
@@ -49,19 +50,19 @@ protected:
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS|Component")
-	TObjectPtr<class UGwajeAbilitySystemComponent> AbilitySystemComponent = nullptr;
-
-	UPROPERTY()
-	TObjectPtr<UAbilitySystemComponent> Internal_AbilitySystemComponent = nullptr;
+	TObjectPtr<class UGwajeAbilitySystemComponent> ASC = nullptr;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS|Component")
 	TObjectPtr<class UAbilitiesComponent> AbilitiesComponent = nullptr;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS|Component")
+	TObjectPtr<class UPlayerAttributeSetComponent> PlayerAttributeSetComponent = nullptr;
 
 	UPROPERTY()
 	TObjectPtr<class UCommonAttributeSet> PlayerAttributeSet = nullptr;
 
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS|Component")
-	//TObjectPtr<class UAttributeSetsComponent> AttributeSetsComponent = nullptr;
+	//TObjectPtr<class UAttributeSetComponent> AttributeSetsComponent = nullptr;
 
 private:
 	/** Camera boom positioning the camera behind the character */
@@ -97,6 +98,9 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "TagSet", meta = (AllowPrivateAccess = "true"))
 	FGameplayTag Tag_FireBall;
 #pragma endregion
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Effect", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<UGameplayEffect> InitializeEffect = nullptr;
 
 };
 

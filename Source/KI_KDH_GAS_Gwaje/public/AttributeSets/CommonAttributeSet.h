@@ -29,7 +29,6 @@ public:
 	//Instant타입의 이펙트가 적용된 직후에만 호출 (Duration이나 Infinite는 실행안됨)
 	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
 
-protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Attribute")
 	FGameplayAttributeData MaxHealth;
 	ATTRIBUTE_ACCESSORS(UCommonAttributeSet, MaxHealth);

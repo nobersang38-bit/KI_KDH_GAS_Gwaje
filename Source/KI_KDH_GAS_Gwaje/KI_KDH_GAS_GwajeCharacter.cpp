@@ -11,7 +11,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Components/AbilitiesComponent.h"
-#include "Components/AttributeSetsComponent.h"
+#include "Components/PlayerAttributeSetComponent.h"
 #include "Components/GwajeAbilitySystemComponent.h"
 #include "AttributeSets/CommonAttributeSet.h"
 
@@ -54,12 +54,12 @@ AKI_KDH_GAS_GwajeCharacter::AKI_KDH_GAS_GwajeCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
-	AbilitySystemComponent = CreateDefaultSubobject<UGwajeAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
-	if(AbilitySystemComponent)Internal_AbilitySystemComponent = Cast<UAbilitySystemComponent>(AbilitySystemComponent);
+	ASC = CreateDefaultSubobject<UGwajeAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
+	//if(ASC)Internal_AbilitySystemComponent = Cast<UAbilitySystemComponent>(ASC);
 
 	AbilitiesComponent = CreateDefaultSubobject<UAbilitiesComponent>(TEXT("AbilitiesComponent"));
 	PlayerAttributeSet = CreateDefaultSubobject<UCommonAttributeSet>(TEXT("PlayerAttributeSet"));
-	//AttributeSetsComponent = CreateDefaultSubobject<UAttributeSetsComponent>(TEXT("AttributeSetsComponent"));
+	PlayerAttributeSetComponent = CreateDefaultSubobject<UPlayerAttributeSetComponent>(TEXT("PlayerAttributeSetComponent"));
 
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
@@ -68,11 +68,7 @@ AKI_KDH_GAS_GwajeCharacter::AKI_KDH_GAS_GwajeCharacter()
 
 UAbilitySystemComponent* AKI_KDH_GAS_GwajeCharacter::GetAbilitySystemComponent() const
 {
-	if (Internal_AbilitySystemComponent)
-	{
-		return Internal_AbilitySystemComponent;
-	}
-	return Cast<UAbilitySystemComponent>(AbilitySystemComponent);
+	return Cast<UAbilitySystemComponent>(ASC);
 }
 
 void AKI_KDH_GAS_GwajeCharacter::BeginPlay()
@@ -157,7 +153,7 @@ void AKI_KDH_GAS_GwajeCharacter::Look(const FInputActionValue& Value)
 
 void AKI_KDH_GAS_GwajeCharacter::FireBall()
 {
-	UE_LOG(LogTemp, Log, TEXT("AKI_KDH_GAS_GwajeCharacter::FireBall"));
+	UE_LOG(LogTemp, Log, TEXT("AKI_KDH_GAS_GwajeCharacter::FireBall KeyDown"));
 	if (AbilitiesComponent)
 	{
 		AbilitiesComponent->ActivateAbilityByTag(Tag_FireBall);
@@ -166,8 +162,17 @@ void AKI_KDH_GAS_GwajeCharacter::FireBall()
 
 void AKI_KDH_GAS_GwajeCharacter::GASInitialize()
 {
-	if (AbilitySystemComponent)
+
+	if (ASC)
 	{
-		AbilitySystemComponent->InitAbilityActorInfo(this, this);
+		ASC->InitAbilityActorInfo(this, this);
+
+		if (InitializeEffect)
+		{
+
+			FGameplayEffectContextHandle EffectContext = ASC->MakeEffectContext();
+			FGameplayEffectSpecHandle SpecHandle = ASC->MakeOutgoingSpec(InitializeEffect, 1, EffectContext);
+			ASC->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
+		}
 	}
 }
